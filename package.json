@@ -1,0 +1,22 @@
+{
+  "name": "ghost-local",
+  "version": "1.0.0",
+  "description": "Set up a local Ghost development environment for theme development and other tweaks.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "adm-zip": "^0.4.7",
+    "gulp": "^3.9.0",
+    "request": "^2.65.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bergren2/ghost-local.git"
+  },
+  "author": "Dan Bergren",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bergren2/ghost-local/issues"
+  },
+  "homepage": "https://github.com/bergren2/ghost-local",
+  "private": true
+}
