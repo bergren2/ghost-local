@@ -17,6 +17,16 @@ Node and Gulp, run the following:
 
   $ npm install
   $ gulp
+  $ cd ghost
+  $ npm install
+
+## Development
+
+While in the `ghost` directory, fire up
+
+  $ npm start
+
+and then check out the site at [localhost:2368](http://localhost:2368)
 
 ## License
 
