@@ -15,16 +15,16 @@ Set up a local Ghost development environment for theme development and other twe
 Once you've cloned down the directory and installed the correct versions of
 Node and Gulp, run the following:
 
-  $ npm install
-  $ gulp
-  $ cd ghost
-  $ npm install
+    $ npm install
+    $ gulp
+    $ cd ghost
+    $ npm install
 
 ## Development
 
 While in the `ghost` directory, fire up
 
-  $ npm start
+    $ npm start
 
 and then check out the site at [localhost:2368](http://localhost:2368)
 
