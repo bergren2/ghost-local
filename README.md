@@ -28,6 +28,12 @@ While in the `ghost` directory, fire up
 
 and then check out the site at [localhost:2368](http://localhost:2368)
 
+## Upgrading Ghost versions
+
+To upgrade Ghost, just change the version used in `gulpfile.js` and rerun `gulp`.
+If you need additional help, the best place to start is [Ghost's own
+documentation](http://support.ghost.org/how-to-upgrade/).
+
 ## License
 
 See LICENSE for details.

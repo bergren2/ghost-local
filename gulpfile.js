@@ -1,34 +1,60 @@
-var gulp = require('gulp');
-var request = require('request');
-var fs = require('fs');
+var gulp = require("gulp");
+var request = require("request");
+var fs = require("fs");
 
-var AdmZip = require('adm-zip');
+var AdmZip = require("adm-zip");
 
-var downloadURL = 'https://ghost.org/zip/ghost-0.7.1.zip';
+var version = "0.7.8";
+var downloadURL = "https://ghost.org/zip/ghost-" + version + ".zip";
 
-gulp.task('default', function() {
-  process.stdout.write('Downloading Ghost... \n');
-  request({
-    method: 'GET',
-    uri: downloadURL,
-    headers: { 'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11',
-            'Accept-Encoding': 'gzip,deflate,sdch',
-            'encoding': 'null',
-            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-            'Cookie': 'cookie'
-        }
-  }).pipe(fs.createWriteStream('ghost.zip'))
-    .on('close', function () {
-      process.stdout.write('Done downloading.\n');
-      process.stdout.write('Extracting zip... ');
-
-       var zip = new AdmZip('./ghost.zip');
-       zip.extractAllTo('./ghost', true);
-
-      process.stdout.write('Done.\n');
-      process.stdout.write('Cleaning up... ');
-      fs.unlink('./ghost.zip', function () {
-        process.stdout.write('Done.\n');
-      });
+// http://stackoverflow.com/questions/12627586/is-node-js-rmdir-recursive-will-it-work-on-non-empty-directories/12761924#12761924
+function deleteFolderRecursive (path) {
+  var files = [];
+  if(fs.existsSync(path)) {
+    files = fs.readdirSync(path);
+    files.forEach(function(file,index){
+      var curPath = path + "/" + file;
+      if(fs.lstatSync(curPath).isDirectory()) { // recurse
+        deleteFolderRecursive(curPath);
+      } else { // delete file
+        fs.unlinkSync(curPath);
+      }
     });
+    fs.rmdirSync(path);
+  }
+}
+
+function deleteFile (path) {
+  if (fs.existsSync(path)) {
+    fs.unlinkSync(path);
+  }
+}
+
+// tasks
+gulp.task("default", ["update-ghost"]);
+
+gulp.task("update-ghost", ["delete-core", "download-ghost"], function () {
+   var zip = new AdmZip("./ghost.zip");
+   zip.extractAllTo("./ghost", true);
+   fs.unlink("./ghost.zip");
+});
+
+gulp.task("delete-core", function () {
+  deleteFolderRecursive("./ghost/core");
+  deleteFile("./ghost/index.js");
+  deleteFile("./ghost/package.json");
+  deleteFile("./ghost/npm-shrinkwrap.json");
+});
+
+gulp.task("download-ghost", function () {
+  return request({
+    method: "GET",
+    uri: downloadURL,
+    headers: { "User-Agent": "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.11 (KHTML, like Gecko) Chrome/23.0.1271.97 Safari/537.11",
+            "Accept-Encoding": "gzip,deflate,sdch",
+            "encoding": "null",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Cookie": "cookie"
+        }
+  }).pipe(fs.createWriteStream("ghost.zip"));
 });
