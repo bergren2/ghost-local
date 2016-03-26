@@ -3,9 +3,13 @@
   "version": "1.0.0",
   "description": "Set up a local Ghost development environment for theme development and other tweaks.",
   "main": "gulpfile.js",
+  "scripts": {
+    "start": "node ghost/index"
+  },
   "dependencies": {
     "adm-zip": "^0.4.7",
     "gulp": "^3.9.0",
+    "gulp-install": "^0.6.0",
     "request": "^2.65.0"
   },
   "repository": {

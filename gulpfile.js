@@ -1,6 +1,7 @@
-var gulp = require("gulp");
-var request = require("request");
 var fs = require("fs");
+var gulp = require("gulp");
+var install = require("gulp-install");
+var request = require("request");
 
 var AdmZip = require("adm-zip");
 
@@ -37,6 +38,7 @@ gulp.task("update-ghost", ["delete-core", "download-ghost"], function () {
    var zip = new AdmZip("./ghost.zip");
    zip.extractAllTo("./ghost", true);
    fs.unlink("./ghost.zip");
+   return gulp.src("./ghost/package.json").pipe(install());
 });
 
 gulp.task("delete-core", function () {
