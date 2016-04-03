@@ -1,5 +1,5 @@
 # ghost-local
-Set up a local Ghost development environment for theme development and other tweaks.
+Set up a local Ghost environment for theme development and other tweaks.
 
 ## Environment Prereqs
 
