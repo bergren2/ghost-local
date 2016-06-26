@@ -5,7 +5,7 @@ Set up a local Ghost environment for theme development and other tweaks.
 
 - nvm
   - `$ brew install nvm`
-- Node v0.10.x
+- Node v0.12.x
   - `$ nvm install`
 
 ## Initial Project Setup

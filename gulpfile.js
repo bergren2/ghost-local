@@ -5,7 +5,7 @@ var request = require("request");
 
 var AdmZip = require("adm-zip");
 
-var version = "0.7.8";
+var version = "0.8.0";
 var downloadURL = "https://ghost.org/zip/ghost-" + version + ".zip";
 
 // http://stackoverflow.com/questions/12627586/is-node-js-rmdir-recursive-will-it-work-on-non-empty-directories/12761924#12761924
