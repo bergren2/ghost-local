@@ -5,7 +5,7 @@ Set up a local Ghost environment for theme development and other tweaks.
 
 - [nodenv](https://github.com/wfarr/nodenv)
   - `$ brew install nodenv`
-- Node v0.12.x
+- Node
   - `$ nodenv install`
 
 ## Initial Project Setup
