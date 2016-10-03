@@ -3,10 +3,10 @@ Set up a local Ghost environment for theme development and other tweaks.
 
 ## Environment Prereqs
 
-- nvm
-  - `$ brew install nvm`
+- [nodenv](https://github.com/wfarr/nodenv)
+  - `$ brew install nodenv`
 - Node v0.12.x
-  - `$ nvm install`
+  - `$ nodenv install`
 
 ## Initial Project Setup
 
