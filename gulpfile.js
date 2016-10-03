@@ -41,11 +41,17 @@ gulp.task("update-ghost", ["delete-core", "download-ghost"], function () {
   return gulp.src("./ghost/package.json").pipe(install());
 });
 
+gulp.task("update-ghost-hard", ["delete-node-modules", "update-ghost"]);
+
 gulp.task("delete-core", function () {
   deleteFolderRecursive("./ghost/core");
   deleteFile("./ghost/index.js");
   deleteFile("./ghost/package.json");
   deleteFile("./ghost/npm-shrinkwrap.json");
+});
+
+gulp.task("delete-node-modules", function () {
+  deleteFolderRecursive("./ghost/node_modules");
 });
 
 gulp.task("download-ghost", function () {

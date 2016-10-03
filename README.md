@@ -16,6 +16,9 @@ Node and Gulp, run the following:
     $ npm install
     $ gulp
 
+The default Gulp task is `update-ghost`, which will take care of downloading the
+version specified in `gulpfile.js` and installing the dependencies.
+
 ## Development
 
 Fire up
@@ -27,8 +30,9 @@ and then check out the site at [localhost:2368](http://localhost:2368).
 ## Upgrading Ghost versions
 
 To upgrade Ghost, just change the version used in `gulpfile.js` and rerun `gulp`.
-If you need additional help, the best place to start is [Ghost's own
-documentation](http://support.ghost.org/how-to-upgrade/).
+If you run into trouble, try running `gulp update-ghost-hard` to clear out the
+`node_modules` directory. If you need additional help, the best place to start is
+[Ghost's own documentation](http://support.ghost.org/how-to-upgrade/).
 
 ## Troubleshooting
 
