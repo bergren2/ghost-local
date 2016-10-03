@@ -35,10 +35,10 @@ function deleteFile (path) {
 gulp.task("default", ["update-ghost"]);
 
 gulp.task("update-ghost", ["delete-core", "download-ghost"], function () {
-   var zip = new AdmZip("./ghost.zip");
-   zip.extractAllTo("./ghost", true);
-   fs.unlink("./ghost.zip");
-   return gulp.src("./ghost/package.json").pipe(install());
+  var zip = new AdmZip("./ghost.zip");
+  zip.extractAllTo("./ghost", true);
+  fs.unlink("./ghost.zip");
+  return gulp.src("./ghost/package.json").pipe(install());
 });
 
 gulp.task("delete-core", function () {
